@@ -5,6 +5,8 @@ import com.challege.hunter.morse.domain.models.MorseModel;
 import java.util.Arrays;
 import java.util.Optional;
 
+import static com.challege.hunter.morse.utilscustom.MorseConstants.TARGET_TO_HUMAN;
+
 public class DataUtilsMorse {
 
     // region Inicializacion codificacion Morse
@@ -58,10 +60,16 @@ public class DataUtilsMorse {
     /**
      * Funcion que devuelve un objeto codificado de tipo MorseModel consultando por codigo Morse
      *
-     * @param morseCode     Codigo morse en formato String
+     * @param code       Codigo morse en formato String
+     * @param targetConverter
      * @return
      */
-    public static Optional<MorseModel> getCharacter(String morseCode){
-        return Arrays.stream(morseCodes).filter(f -> f.getCodigMorse().equals(morseCode)).findFirst();
+    public static Optional<MorseModel> getCharacter(String code, String targetConverter){
+        if( targetConverter.equals(TARGET_TO_HUMAN)){
+            return Arrays.stream(morseCodes).filter(f -> f.getCode().equals(code)).findFirst();
+        }else{
+            return Arrays.stream(morseCodes).filter(f -> f.getWord().equals(code)).findFirst();
+        }
+
     }
 }

@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MorseModel
 {
-    private String caracter;
-    private String codigMorse;
+    private String word;
+    private String code;
 }

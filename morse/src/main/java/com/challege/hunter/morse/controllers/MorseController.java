@@ -41,13 +41,44 @@ public class MorseController {
     }
     // endregion
 
+    // region Nivel 2
+
+    /**
+     * Metodo endpoint que convierte un mensaje de lenguaje Morse a Lenguaje Humano
+     *
+     * @param morseMessage
+     * @return
+     * @throws MorseException
+     */
     @GetMapping("/decode-level2-traslate2human")
-    public ResponseEntity<String> decode(@RequestBody MessageDto messageMorse ) throws MorseException {
-        Logs.info("Inicio del servicio: morse.decode()" );
+    public ResponseEntity<String> decodeTraslate2human(@RequestBody MessageDto morseMessage ) throws MorseException {
+        Logs.info("Inicio del servicio: decode-level2-traslate2human" );
 
-        String decodeMessage = morseService.translate2Human( messageMorse.getMessage());
+        String decodeMessage = morseService.translate2Human( morseMessage.getMessage());
 
-        Logs.info("Finaliza OK. del servicio: morse.decode()" );
+        Logs.info("Finaliza OK. del servicio: decode-level2-traslate2human()" );
         return new ResponseEntity<>(decodeMessage, HttpStatus.OK);
     }
+
+
+    /**
+     * Metodo endpoint que convierte un mensaje de lenguaje Lenguaje Humano a Morse
+     *
+     * @param humanMessage
+     * @return
+     * @throws MorseException
+     */
+    @GetMapping("/decode-level2-traslate2morse")
+    public ResponseEntity<String> decodeTraslate2morse(@RequestBody MessageDto humanMessage ) throws MorseException {
+        Logs.info("Inicio del servicio: morse.decode-level2-traslate2morse" );
+
+        String decodeMessage = morseService.translate2Morse( humanMessage.getMessage());
+
+        Logs.info("Finaliza OK. del servicio: morse.decode-level2-traslate2morse" );
+        return new ResponseEntity<>(decodeMessage, HttpStatus.OK);
+    }
+
+    // endregion
+
+
 }
