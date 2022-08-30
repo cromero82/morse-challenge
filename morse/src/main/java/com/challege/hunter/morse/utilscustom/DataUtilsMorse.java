@@ -7,6 +7,12 @@ import java.util.Optional;
 
 import static com.challege.hunter.morse.utilscustom.MorseConstants.TARGET_TO_HUMAN;
 
+/**
+ * Clase de tipo Static Con metodos globales para acceder a definicion de Morse y metodos comunes del lenguaje Morse
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
+ */
 public class DataUtilsMorse {
 
     // region Inicializacion codificacion Morse

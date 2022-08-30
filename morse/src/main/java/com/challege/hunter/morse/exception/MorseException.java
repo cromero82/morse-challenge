@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Clase de tipo excepción. personaliza la excepción y tiene por defecto el status code: 412 PRECONDICION_FAILED (Reglas de negocio)
- * @author Carlos Andres Romero
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
  */
 @ResponseStatus(code = HttpStatus.PRECONDITION_FAILED)
 public class MorseException extends Exception {
@@ -19,22 +21,22 @@ public class MorseException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    public MorseException(String... exceptionMsg) {
-        super(llenarMensaje(exceptionMsg));
-        this.httpStatus = HttpStatus.PRECONDITION_FAILED;
-    }
-
-    public MorseException(HttpStatus status, String... exceptionMsg) {
-        super(llenarMensaje(exceptionMsg));
+    public MorseException(HttpStatus status, String... exceptionMessage) {
+        super(messageInitialize(exceptionMessage));
         this.httpStatus = status;
     }
 
-    private static String llenarMensaje(String... exceptionMsg) {
-        StringBuilder sbMensaje = new StringBuilder();
-        for (String data : exceptionMsg) {
-            sbMensaje.append(data);
+    /**
+     * Funcion que inicialice cada uno de los mensajes de error y devuelve el valor concatenado
+     * @param exceptionMessage
+     * @return
+     */
+    private static String messageInitialize(String... exceptionMessage) {
+        StringBuilder sbMessage = new StringBuilder();
+        for (String data : exceptionMessage) {
+            sbMessage.append(data);
         }
-        Logs.error(sbMensaje.toString());
-        return sbMensaje.toString();
+        Logs.error(sbMessage.toString());
+        return sbMessage.toString();
     }
 }

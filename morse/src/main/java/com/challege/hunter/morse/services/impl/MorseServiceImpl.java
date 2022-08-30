@@ -12,6 +12,13 @@ import java.util.Optional;
 import static com.challege.hunter.morse.utilscustom.MorseConstants.TARGET_TO_HUMAN;
 import static com.challege.hunter.morse.utilscustom.MorseConstants.TARGET_TO_MORSE;
 
+/**
+ * Clase que  implementa el servicio Morse
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
+ * @see "https://es.wikipedia.org/wiki/C%C3%B3digo_morse"
+ */
 @Service
 public class MorseServiceImpl implements IMorseService {
 

@@ -9,6 +9,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * Clase de tipo PruebaUntiaria de la clase de la implementación del servicio Morse
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 class MorseServiceImplTest {

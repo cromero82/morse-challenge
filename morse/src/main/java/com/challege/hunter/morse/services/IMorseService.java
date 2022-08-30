@@ -2,6 +2,12 @@ package com.challege.hunter.morse.services;
 
 import com.challege.hunter.morse.exception.MorseException;
 
+/**
+ * Clase de tipo Interfaz con el contrato para los servicios Morse
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
+ */
 public interface IMorseService {
 
     // region Nivel 2

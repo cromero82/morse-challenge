@@ -1,5 +1,6 @@
 package com.challege.hunter.morse.controllers;
 
+import com.challege.hunter.morse.domain.dto.ResultDto;
 import com.challege.hunter.morse.exception.MorseException;
 import com.challege.hunter.morse.domain.dto.MessageDto;
 import com.challege.hunter.morse.services.IMorseService;
@@ -12,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador del servicio Morse
+ *
+ * @author Carlos andres romero - soportecarlosromero@gmail.com
+ * @version 1.0
+ */
 @RequestMapping("/v1/morse")
 @RestController
 public class MorseController {
@@ -50,14 +57,15 @@ public class MorseController {
      * @return
      * @throws MorseException
      */
-    @GetMapping("/decode-level2-traslate2human")
-    public ResponseEntity<String> decodeTraslate2human(@RequestBody MessageDto morseMessage ) throws MorseException {
+    @GetMapping("/2text")
+    public ResponseEntity<ResultDto> decodeTraslate2human(@RequestBody MessageDto morseMessage ) throws MorseException {
         Logs.info("Inicio del servicio: decode-level2-traslate2human" );
 
         String decodeMessage = morseService.translate2Human( morseMessage.getMessage());
 
+        ResultDto result = new ResultDto(decodeMessage);
         Logs.info("Finaliza OK. del servicio: decode-level2-traslate2human()" );
-        return new ResponseEntity<>(decodeMessage, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 
@@ -68,17 +76,17 @@ public class MorseController {
      * @return
      * @throws MorseException
      */
-    @GetMapping("/decode-level2-traslate2morse")
-    public ResponseEntity<String> decodeTraslate2morse(@RequestBody MessageDto humanMessage ) throws MorseException {
+    @GetMapping("/decodeBits")
+    public ResponseEntity<ResultDto> decodeTraslate2morse(@RequestBody MessageDto humanMessage ) throws MorseException {
         Logs.info("Inicio del servicio: morse.decode-level2-traslate2morse" );
 
         String decodeMessage = morseService.translate2Morse( humanMessage.getMessage());
 
+        ResultDto result = new ResultDto(decodeMessage);
         Logs.info("Finaliza OK. del servicio: morse.decode-level2-traslate2morse" );
-        return new ResponseEntity<>(decodeMessage, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // endregion
-
 
 }
